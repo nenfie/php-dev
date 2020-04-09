@@ -51,6 +51,17 @@
   <!-- jQuery -->
   <script>
 
+    $('.custom-file-input').on('change', function() {
+      let fileName = $(this).val().split('\\').pop();
+      $(this).next('.custom-file-label').addClass("selected").html(fileName);
+    });
+
+    // preview selected image
+    var loadFile = function(event) {
+      var output = document.getElementById('output');
+      output.src = URL.createObjectURL(event.target.files[0]);
+    };
+
     $('.form-check-input').on('click', function() {
       const menuId = $(this).data('menu');
       const roleId = $(this).data('role');
